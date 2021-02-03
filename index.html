@@ -1,0 +1,169 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha1.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+    <link rel="stylesheet" href="blti-launch.css"/>
+</head>
+
+<body>
+<h2>LTI configuration parameters</h2>
+
+<form id="ltiConfigurationForm" onsubmit="updateLtiLaunchForm(); return false;">
+    <ul>
+        <li>
+            <label>Launch URL:
+                <input id="launchUrl" value="" type="text" size="80"/></label>
+        </li>
+        <li>
+            <label>Key:
+                <input id="key" value="" type="text" size="80"/></label>
+        </li>
+        <li>
+            <label>Secret:
+                <input id="secret" value="" type="text" size="80"/></label>
+        </li>
+    </ul>
+    <button type="submit" style="display: none;"></button>
+</form>
+
+<h2>LTI launch parameters</h2>
+
+<form id="ltiLaunchForm" name="ltiLaunchForm" method="POST" action="" onsubmit="updateLtiLaunchForm()">
+    <ul>
+        <li><label>user_id:
+            <input type="text" id="user_id" name="user_id" value="100034"></label></li>
+        <li><label>custom_lab_id:
+            <input type="text" name="custom_lab_id" id="custom_lab_id" value="lab-Ve2Fa8Dni1abNzKs"></label></li>
+        <li><label>roles:
+            <input type="text" name="roles" value="Learner"></label></li>
+        <li><label>resource_link_id:
+            <input type="text" name="resource_link_id" value="resLink_217"></label></li>
+        <li><label>resource_link_title:
+            <input type="text" name="resource_link_title" value="API HIT"></label></li>
+        <li><label>resource_link_description:
+            <input type="text" name="resource_link_description"
+                   value="Check through api."></label></li>
+        <li><label>lis_person_name_full:
+            <input type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac"></label>
+        </li>
+        <li><label>lis_person_name_family:
+            <input type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac"></label></li>
+        <li><label>lis_person_name_given:
+            <input type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac"></label></li>
+        <li><label>lis_person_contact_email_primary:
+            <input type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary"
+                   value="checkisaac@school.edu"></label></li>
+        <li><label>lis_person_sourcedid:
+            <input type="text" name="lis_person_sourcedid" value="result_217_1481"></label>
+        </li>
+        <li><label>context_id:
+            <input type="text" name="context_id" value="contextID_1136"></label></li>
+        <li><label>context_title:
+            <input type="text" name="context_title"
+                   value="Design of API"></label></li>
+        <li><label>context_label:
+            <input type="text" name="context_label" value="SI182"></label></li>
+        <li><label>tool_consumer_instance_guid:
+            <input type="text" name="tool_consumer_instance_guid"
+                   value="https://training.cybintsolutions.com/"></label></li>
+        <li><label>tool_consumer_instance_description:
+            <input type="text" name="tool_consumer_instance_description"
+                   value="University of School (LMSng)"></label></li>
+        <li><label>custom_component_display_name:
+            <input type="text" name="custom_component_display_name"
+                   value="lab_check"></label></li>
+
+        <li><label>lti_version:
+            <input type="text" name="lti_version" value="LTI-1p0"></label></li>
+        <li><label>lti_message_type:
+            <input type="text" name="lti_message_type"
+                   value="basic-lti-launch-request"></label></li>
+
+        <li><label>oauth_callback:
+            <input type="text" name="oauth_callback" value="about:blank"></label></li>
+        <li><label>oauth_consumer_key:
+            <input type="text" name="oauth_consumer_key" id="oauth_consumer_key" readonly
+                   value=""></label></li>
+        <li><label>oauth_version:
+            <input type="text" name="oauth_version" value="1.0"></label></li>
+        <li><label>oauth_nonce:
+            <input type="text" name="oauth_nonce" id="oauth_nonce" value=""></label></li>
+        <li><label>oauth_timestamp:
+            <input type="text" name="oauth_timestamp" id="oauth_timestamp" value=""></label>
+        </li>
+        <li><label>oauth_signature_method:
+            <input type="text" name="oauth_signature_method" value="HMAC-SHA1"></label>
+        </li>
+
+        <li>oauth_signature:
+            <input type="text" readonly name="oauth_signature" id="oauth_signature" value=""
+                   size="40"> <input type="button" value="Refresh"
+                                     onclick="updateLtiLaunchForm(); return false;"/></li>
+    </ul>
+    <p>
+        <button type="submit" id="launch_lti">Launch</button>
+    </p>
+</form>
+</body>
+</html>
+<script type="text/javascript">
+
+(function () {
+    window.onload = function () {
+        $('#launchUrl').val('https://demo-lab.cybintsolutions.com/lti/auth/');
+        $('#key').val('');
+        $('#secret').val('');
+
+        updateLtiLaunchForm();
+    };
+
+    this.updateLtiLaunchForm = function () {
+        var launchUrl = $('#launchUrl').val();
+        var encodedSecret = encodeURIComponent($('#secret').val()) + '&';
+        var $ltiLaunchForm = $('#ltiLaunchForm');
+
+        $ltiLaunchForm.attr('action', launchUrl);
+        $('#oauth_consumer_key').val($('#key').val());
+        $('#oauth_timestamp').val(Math.floor(new Date().getTime() / 1000));
+        $('#oauth_nonce').val(uniqid('', true));
+
+        var fields = [];
+        $('input[type="text"]', $ltiLaunchForm).not('[name="oauth_signature"]').each(function () {
+            var input = $(this);
+            fields.push(input.attr('name') + '=' + rawurlencode(input.val()));
+        });
+        var message = 'POST&' + encodeURIComponent(launchUrl) + '&' +
+            rawurlencode(fields.sort().join('&'));
+
+        var oauthSignature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, encodedSecret));
+        $('#oauth_signature').val(oauthSignature);
+    };
+
+    this.rawurlencode = function (str) {
+        str = (str + '').toString();
+        return encodeURIComponent(str).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').
+            replace(/\)/g, '%29').replace(/\*/g, '%2A');
+    };
+
+    this.uniqid = function (prefix, moreEntropy) {
+        prefix = prefix || '';
+        moreEntropy = moreEntropy || false;
+        var result;
+
+        this.formatSeed = function (seed, width) {
+            seed = parseInt(seed, 10).toString(16);
+            return width < seed.length
+                ? seed.slice(seed.length - width)
+                : ((width > seed.length) ? new Array(1 + (width - seed.length)).join('0') + seed : seed);
+        };
+
+        result = prefix + this.formatSeed(parseInt(new Date().getTime() / 1000, 10), 8) + this.formatSeed(Math.floor(Math.random() * 0x75bcd15) + 1, 5);
+
+        if (moreEntropy) result += (Math.random() * 10).toFixed(8).toString();
+
+        return result;
+    };
+})();
+</script>
