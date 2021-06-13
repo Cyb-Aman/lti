@@ -14,15 +14,15 @@
     <ul>
         <li>
             <label>Launch URL:
-                <input id="launchUrl" value="" type="text" size="80"/></label>
+                <input style="background: bisque;" id="launchUrl" value="" type="text" size="80"/></label>
         </li>
         <li>
             <label>Key:
-                <input id="key" value="" type="text" size="80"/></label>
+                <input style="background: bisque;" id="key" value="" type="text" size="80"/></label>
         </li>
         <li>
             <label>Secret:
-                <input id="secret" value="" type="text" size="80"/></label>
+                <input style="background: bisque;" id="secret" value="" type="text" size="80"/></label>
         </li>
     </ul>
     <button type="submit" style="display: none;"></button>
@@ -33,9 +33,9 @@
 <form id="ltiLaunchForm" name="ltiLaunchForm" method="POST" action="" onsubmit="updateLtiLaunchForm()">
     <ul>
         <li><label>user_id:
-            <input type="text" id="user_id" name="user_id" value="100034"></label></li>
+            <input style="background: bisque;" type="text" id="user_id" name="user_id" value="100034"></label></li>
         <li><label>custom_lab_id:
-            <input type="text" name="custom_lab_id" id="custom_lab_id" value="lab-Ve2Fa8Dni1abNzKs"></label></li>
+            <input style="background: bisque;" type="text" name="custom_lab_id" id="custom_lab_id" value="lab-Ve2Fa8Dni1abNzKs"></label></li>
         <li><label>roles:
             <input type="text" name="roles" value="Learner"></label></li>
         <li><label>resource_link_id:
@@ -46,17 +46,17 @@
             <input type="text" name="resource_link_description"
                    value="Check through api."></label></li>
         <li><label>lis_person_name_full:
-            <input type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac"></label>
+            <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac"></label>
         </li>
         <li><label>lis_person_name_family:
-            <input type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac"></label></li>
+            <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac"></label></li>
         <li><label>lis_person_name_given:
-            <input type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac"></label></li>
+            <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac"></label></li>
         <li><label>lis_person_contact_email_primary:
-            <input type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary"
+            <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary"
                    value="checkisaac@school.edu"></label></li>
         <li><label>lis_person_sourcedid:
-            <input type="text" name="lis_person_sourcedid" value="result_217_1481"></label>
+            <input style="background: bisque;" type="text" name="lis_person_sourcedid" value="result_217_1481"></label>
         </li>
         <li><label>context_id:
             <input type="text" name="context_id" value="contextID_1136"></label></li>
@@ -112,7 +112,7 @@
 
 (function () {
     window.onload = function () {
-        $('#launchUrl').val('https://demo-lab.cybintsolutions.com/lti/auth/');
+        $('#launchUrl').val('https://test.cybintsolutions.com');
         $('#key').val('');
         $('#secret').val('');
 
