@@ -14,7 +14,8 @@
     <ul>
         <li>
             <label>Launch URL:
-                <input style="background: bisque;" id="launchUrl" value="" type="text" size="80"/></label>
+                <input style="background: bisque;" id="launchUrl" value="" type="text" size="80">
+            </label>
         </li>
         <li>
             <label>Key:
@@ -112,11 +113,12 @@
 (function () {
     window.onload = function () {
         $('#user_id').val(makeRandomUserId())
-        $('#launchUrl').val('');
+        $('#launchUrl').val('https://platform-lab.cybintsolutions.com/lti/auth/');
         $('#key').val('');
         $('#secret').val('');
-        $('#lis_person_name_full').val(makeRandomFullName())
-        $('#lis_person_sourced_id').val(makeRandomSourcedId())
+        $('#lis_person_name_full').on("input", function() {
+            createFullName()
+        })
         updateLtiLaunchForm();
     };
 
@@ -142,35 +144,11 @@
         $('#oauth_signature').val(oauthSignature);
     };
 
-    this.makeRandomFullName = function () {
-        var firstName = ""
-        var lastName = ""
-        var capitalLetterFirstName = ""
-        var capitalLetterLastName = ""
-        var possibleCapitalLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        var possible = "abcdefghijklmnopqrstuvwxyz"
-        
-        for (var i = 0; i < 1; i++) {
-            capitalLetterFirstName += possibleCapitalLetter.charAt(Math.floor(Math.random() * possibleCapitalLetter.length))
-        }
-
-        for (var i = 0; i < 1; i++) {
-            capitalLetterLastName += possibleCapitalLetter.charAt(Math.floor(Math.random() * possibleCapitalLetter.length))
-        }
-
-        for (var i = 0; i < 4; i++) {
-            firstName += possible.charAt(Math.floor(Math.random() * possible.length))
-        }
-
-        for (var i = 0; i < 4; i++) {
-            lastName += possible.charAt(Math.floor(Math.random() * possible.length))
-        }
-
-        $('#lis_person_name_family').val(capitalLetterLastName+lastName)
-        $('#lis_person_name_given').val(capitalLetterFirstName+firstName)
-        $('#lis_person_contact_email_primary').val(((capitalLetterFirstName+firstName).toLowerCase())+"."+((capitalLetterLastName+lastName).toLowerCase())+"@gmail.com")
-
-        return capitalLetterFirstName + firstName + " " + capitalLetterLastName + lastName
+    this.createFullName = function () {
+        $('#lis_person_name_given').val($('#lis_person_name_full').val().split(' ').slice(0, -1).join(' '))
+        $('#lis_person_name_family').val($('#lis_person_name_full').val().split(' ').slice(-1).join(' '))
+        $('#lis_person_sourced_id').val('result_217_1481'+"_"+$('#lis_person_name_given').val()+"_"+$('#lis_person_name_family').val())
+        $('#lis_person_contact_email_primary').val(($('#lis_person_name_given').val().toLowerCase())+"."+($('#lis_person_name_family').val().toLowerCase())+"@gmail1000000.com")
     }
 
     this.makeRandomUserId = function () {
@@ -182,17 +160,6 @@
         }
 
         return $('#user_id').val() + userIdAddition
-    }
-
-    this.makeRandomSourcedId = function () {
-        var randomSourcedIdAddition = ""
-        var possible = "0123456789"
-
-        for (var i = 0; i < 4; i++) {
-            randomSourcedIdAddition += possible.charAt(Math.floor(Math.random() * possible.length))
-        }
-
-        return $('#lis_person_sourced_id').val() + "_" + randomSourcedIdAddition
     }
 
     this.rawurlencode = function (str) {
