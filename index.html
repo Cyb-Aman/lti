@@ -46,17 +46,16 @@
             <input type="text" name="resource_link_description"
                    value="Check through api."></label></li>
         <li><label>lis_person_name_full:
-            <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac"></label>
+            <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full"></label>
         </li>
         <li><label>lis_person_name_family:
-            <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac"></label></li>
+            <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family"></label></li>
         <li><label>lis_person_name_given:
-            <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac"></label></li>
+            <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given"></label></li>
         <li><label>lis_person_contact_email_primary:
-            <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary"
-                   value="checkisaac@school.edu"></label></li>
-        <li><label>lis_person_sourcedid:
-            <input style="background: bisque;" type="text" name="lis_person_sourcedid" value="result_217_1481"></label>
+            <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary"></label></li>
+        <li><label>lis_person_sourced_id:
+            <input style="background: bisque;" type="text" name="lis_person_sourced_id" id="lis_person_sourced_id" value="result_217_1481"></label>
         </li>
         <li><label>context_id:
             <input type="text" name="context_id" value="contextID_1136"></label></li>
@@ -65,7 +64,7 @@
                    value="Design of API"></label></li>
         <li><label>context_label:
             <input type="text" name="context_label" value="SI182"></label></li>
-        <li><label>tool_consumer_instance_guid:
+        <li><label>tool_consumer_instance_guide:
             <input type="text" name="tool_consumer_instance_guid"
                    value="https://training.cybintsolutions.com/"></label></li>
         <li><label>tool_consumer_instance_description:
@@ -112,10 +111,12 @@
 
 (function () {
     window.onload = function () {
+        $('#user_id').val(makeRandomUserId())
         $('#launchUrl').val('');
         $('#key').val('');
         $('#secret').val('');
-
+        $('#lis_person_name_full').val(makeRandomFullName())
+        $('#lis_person_sourced_id').val(makeRandomSourcedId())
         updateLtiLaunchForm();
     };
 
@@ -140,6 +141,59 @@
         var oauthSignature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, encodedSecret));
         $('#oauth_signature').val(oauthSignature);
     };
+
+    this.makeRandomFullName = function () {
+        var firstName = ""
+        var lastName = ""
+        var capitalLetterFirstName = ""
+        var capitalLetterLastName = ""
+        var possibleCapitalLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        var possible = "abcdefghijklmnopqrstuvwxyz"
+        
+        for (var i = 0; i < 1; i++) {
+            capitalLetterFirstName += possibleCapitalLetter.charAt(Math.floor(Math.random() * possibleCapitalLetter.length))
+        }
+
+        for (var i = 0; i < 1; i++) {
+            capitalLetterLastName += possibleCapitalLetter.charAt(Math.floor(Math.random() * possibleCapitalLetter.length))
+        }
+
+        for (var i = 0; i < 4; i++) {
+            firstName += possible.charAt(Math.floor(Math.random() * possible.length))
+        }
+
+        for (var i = 0; i < 4; i++) {
+            lastName += possible.charAt(Math.floor(Math.random() * possible.length))
+        }
+
+        $('#lis_person_name_family').val(capitalLetterLastName+lastName)
+        $('#lis_person_name_given').val(capitalLetterFirstName+firstName)
+        $('#lis_person_contact_email_primary').val(((capitalLetterFirstName+firstName).toLowerCase())+"."+((capitalLetterLastName+lastName).toLowerCase())+"@gmail.com")
+
+        return capitalLetterFirstName + firstName + " " + capitalLetterLastName + lastName
+    }
+
+    this.makeRandomUserId = function () {
+        var userIdAddition = ""
+        var possible = "0123456789"
+
+        for (var i = 0; i < 4; i++) {
+            userIdAddition += possible.charAt(Math.floor(Math.random() * possible.length))
+        }
+
+        return $('#user_id').val() + userIdAddition
+    }
+
+    this.makeRandomSourcedId = function () {
+        var randomSourcedIdAddition = ""
+        var possible = "0123456789"
+
+        for (var i = 0; i < 4; i++) {
+            randomSourcedIdAddition += possible.charAt(Math.floor(Math.random() * possible.length))
+        }
+
+        return $('#lis_person_sourced_id').val() + "_" + randomSourcedIdAddition
+    }
 
     this.rawurlencode = function (str) {
         str = (str + '').toString();
