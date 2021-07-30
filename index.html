@@ -32,72 +32,92 @@
 
 <form id="ltiLaunchForm" name="ltiLaunchForm" method="POST" action="" onsubmit="updateLtiLaunchForm()">
     <ul>
-        <li><label>user_id:
+        <li style="display: none;"><label>user_id:
             <input style="background: bisque;" type="text" id="user_id" name="user_id" value="100034"></label></li>
-        <li><label>custom_lab_id:
-            <input style="background: bisque;" type="text" name="custom_lab_id" id="custom_lab_id" value="lab-9voqV4YwnnUuZ2E4"></label></li>
-        <li><label>roles:
+        <li>
+            <label>catalog_id:
+                <input style="background: bisque;" type="text" name="catalog_id" id="catalog_id">
+            </label>
+        </li>
+        <li>
+            <label>asset_id:
+                <input style="background: bisque;" type="text" name="asset_id" id="asset_id">
+            </label>
+        </li>
+        <li style="display: none;"><label>roles:
             <input type="text" name="roles" value="Learner"></label></li>
-        <li><label>resource_link_id:
+        <li style="display: none;"><label>resource_link_id:
             <input type="text" name="resource_link_id" value="resLink_217"></label></li>
-        <li><label>resource_link_title:
+        <li style="display: none;"><label>resource_link_title:
             <input type="text" name="resource_link_title" value="API HIT"></label></li>
-        <li><label>resource_link_description:
+        <li style="display: none;"><label>resource_link_description:
             <input type="text" name="resource_link_description"
                    value="Check through api."></label></li>
-        <li><label>lis_person_name_full:
-            <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac"></label>
+        <li>
+            <label>lis_person_name_full:
+                <input style="background: bisque;" type="text" name="lis_person_name_full" id="lis_person_name_full" value="CheckIsaac">
+            </label>
         </li>
-        <li><label>lis_person_name_family:
-            <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac"></label></li>
-        <li><label>lis_person_name_given:
-            <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac"></label></li>
-        <li><label>lis_person_contact_email_primary:
-            <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary"
-                   value="checkisaac@school.edu"></label></li>
-        <li><label>lis_person_sourcedid:
-            <input style="background: bisque;" type="text" name="lis_person_sourcedid" value="result_217_1481"></label>
+        <li>
+            <label>lis_person_name_family:
+                <input style="background: bisque;" type="text" name="lis_person_name_family" id="lis_person_name_family" value="CheckIsaac">
+            </label>
         </li>
-        <li><label>context_id:
+        <li>
+            <label>lis_person_name_given:
+                <input style="background: bisque;" type="text" name="lis_person_name_given" id="lis_person_name_given" value="CheckIsaac">
+            </label>
+        </li>
+        <li>
+            <label>lis_person_contact_email_primary:
+                <input style="background: bisque;" type="text" name="lis_person_contact_email_primary" id="lis_person_contact_email_primary" value="checkisaac@school.edu">
+            </label>
+        </li>
+        <li style="display: none;">
+            <label>lis_person_sourcedid:
+                <input style="background: bisque;" type="text" name="lis_person_sourcedid" id="lis_person_sourcedid" value="result_217_1481">
+            </label>
+        </li>
+        <li style="display: none;"><label>context_id:
             <input type="text" name="context_id" value="contextID_1136"></label></li>
-        <li><label>context_title:
+        <li style="display: none;"><label>context_title:
             <input type="text" name="context_title"
                    value="Design of API"></label></li>
-        <li><label>context_label:
+        <li style="display: none;"><label>context_label:
             <input type="text" name="context_label" value="SI182"></label></li>
-        <li><label>tool_consumer_instance_guid:
+        <li style="display: none;"><label>tool_consumer_instance_guid:
             <input type="text" name="tool_consumer_instance_guid"
                    value="https://training.cybintsolutions.com/"></label></li>
-        <li><label>tool_consumer_instance_description:
+        <li style="display: none;"><label>tool_consumer_instance_description:
             <input type="text" name="tool_consumer_instance_description"
                    value="University of School (LMSng)"></label></li>
-        <li><label>custom_component_display_name:
+        <li style="display: none;"><label>custom_component_display_name:
             <input type="text" name="custom_component_display_name"
                    value="lab_check"></label></li>
 
-        <li><label>lti_version:
+        <li style="display: none;"><label>lti_version:
             <input type="text" name="lti_version" value="LTI-1p0"></label></li>
-        <li><label>lti_message_type:
+        <li style="display: none;"><label>lti_message_type:
             <input type="text" name="lti_message_type"
                    value="basic-lti-launch-request"></label></li>
 
-        <li><label>oauth_callback:
+        <li style="display: none;"><label>oauth_callback:
             <input type="text" name="oauth_callback" value="about:blank"></label></li>
-        <li><label>oauth_consumer_key:
+        <li style="display: none;"><label>oauth_consumer_key:
             <input type="text" name="oauth_consumer_key" id="oauth_consumer_key" readonly
                    value=""></label></li>
-        <li><label>oauth_version:
+        <li style="display: none;"><label>oauth_version:
             <input type="text" name="oauth_version" value="1.0"></label></li>
-        <li><label>oauth_nonce:
+        <li style="display: none;"><label>oauth_nonce:
             <input type="text" name="oauth_nonce" id="oauth_nonce" value=""></label></li>
-        <li><label>oauth_timestamp:
+        <li style="display: none;"><label>oauth_timestamp:
             <input type="text" name="oauth_timestamp" id="oauth_timestamp" value=""></label>
         </li>
-        <li><label>oauth_signature_method:
+        <li style="display: none;"><label>oauth_signature_method:
             <input type="text" name="oauth_signature_method" value="HMAC-SHA1"></label>
         </li>
 
-        <li>oauth_signature:
+        <li style="display: none;">oauth_signature:
             <input type="text" readonly name="oauth_signature" id="oauth_signature" value=""
                    size="40"> <input type="button" value="Refresh"
                                      onclick="updateLtiLaunchForm(); return false;"/></li>
@@ -112,11 +132,15 @@
 
 (function () {
     window.onload = function () {
-        $('#launchUrl').val('');
-        $('#key').val('');
-        $('#secret').val('');
-
-        updateLtiLaunchForm();
+        $('#user_id').val(makeRandomUserId())
+        $('#launchUrl').val('')
+        $('#key').val('')
+        $('#secret').val('')
+        $('#catalog_id').val('')
+        $('#asset_id').val('')
+        $('#lis_person_name_full').val(makeRandomFullName())
+        $('#lis_person_sourcedid').val(makeRandomSourcedId($('#lis_person_name_given').val(), $('#lis_person_name_family').val()))
+        updateLtiLaunchForm()
     };
 
     this.updateLtiLaunchForm = function () {
@@ -140,6 +164,52 @@
         var oauthSignature = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, encodedSecret));
         $('#oauth_signature').val(oauthSignature);
     };
+
+    this.makeRandomFullName = function () {
+        var firstName = ""
+        var lastName = ""
+        var capitalLetterFirstName = ""
+        var capitalLetterLastName = ""
+        var possibleCapitalLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        var possible = "abcdefghijklmnopqrstuvwxyz"
+
+        for (var i = 0; i < 1; i++) {
+            capitalLetterFirstName += possibleCapitalLetter.charAt(Math.floor(Math.random() * possibleCapitalLetter.length))
+        }
+
+        for (var i = 0; i < 1; i++) {
+            capitalLetterLastName += possibleCapitalLetter.charAt(Math.floor(Math.random() * possibleCapitalLetter.length))
+        }
+
+        for (var i = 0; i < 4; i++) {
+            firstName += possible.charAt(Math.floor(Math.random() * possible.length))
+        }
+
+        for (var i = 0; i < 4; i++) {
+            lastName += possible.charAt(Math.floor(Math.random() * possible.length))
+        }
+
+        $('#lis_person_name_family').val(capitalLetterLastName+lastName)
+        $('#lis_person_name_given').val(capitalLetterFirstName+firstName)
+        $('#lis_person_contact_email_primary').val(((capitalLetterFirstName+firstName).toLowerCase())+"."+((capitalLetterLastName+lastName).toLowerCase())+"@gmail1000000.com")
+
+        return capitalLetterFirstName + firstName + " " + capitalLetterLastName + lastName
+    }
+
+    this.makeRandomUserId = function () {
+        var userIdAddition = ""
+        var possible = "0123456789"
+
+        for (var i = 0; i < 4; i++) {
+            userIdAddition += possible.charAt(Math.floor(Math.random() * possible.length))
+        }
+
+        return $('#user_id').val() + userIdAddition
+    }
+
+    this.makeRandomSourcedId = function (firstName, lastName) {
+        return $('#lis_person_sourcedid').val() + "_" + firstName + "_" + lastName
+    }
 
     this.rawurlencode = function (str) {
         str = (str + '').toString();
