@@ -35,13 +35,13 @@
         <li style="display: none;"><label>user_id:
             <input style="background: bisque;" type="text" id="user_id" name="user_id" value="100034"></label></li>
         <li>
-            <label>catalog_id:
-                <input style="background: bisque;" type="text" name="catalog_id" id="catalog_id">
+            <label>custom_catalog_id:
+                <input style="background: bisque;" type="text" name="custom_catalog_id" id="custom_catalog_id">
             </label>
         </li>
         <li>
-            <label>asset_id:
-                <input style="background: bisque;" type="text" name="asset_id" id="asset_id">
+            <label>custom_asset_id:
+                <input style="background: bisque;" type="text" name="custom_asset_id" id="custom_asset_id">
             </label>
         </li>
         <li style="display: none;"><label>roles:
@@ -136,8 +136,8 @@
         $('#launchUrl').val('')
         $('#key').val('')
         $('#secret').val('')
-        $('#catalog_id').val('')
-        $('#asset_id').val('')
+        $('#custom_catalog_id').val('')
+        $('#custom_asset_id').val('')
         $('#lis_person_name_full').val(makeRandomFullName())
         $('#lis_person_sourcedid').val(makeRandomSourcedId($('#lis_person_name_given').val(), $('#lis_person_name_family').val()))
         updateLtiLaunchForm()
